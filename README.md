@@ -1,16 +1,7 @@
-# magazine
+# magazine d'information
 
-A new Flutter project.
+Ce projet a été crée dans le cadre de DCLIC.
 
-## Getting Started
+## Objectif
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+L’objectif de cette activité est de compléter votre première application Magazine infos (Activité3) qui expose des informations sur une magazine. Vous devriez changer le code conformément aux instructions décrites dans ce qui suit de manière à avoir le rendu de la Figure
