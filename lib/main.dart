@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magazine/modele/redacteur.dart';
 
 void main() {
   runApp(const MonAppli());
@@ -24,11 +25,84 @@ class PageAccueil extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Magazine Infos'),
+        title: const Text(
+          'Magazine Infos',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
+        ),
         centerTitle: true,
+        titleTextStyle: const TextStyle(color: Colors.white),
         backgroundColor: Colors.pink,
-        leading: IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
-        actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
+        /*leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),*/
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: Colors.white),
+            tooltip: 'Recherchez',
+            onPressed: () {},
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.pink),
+              child: Text(
+                "Mag_Info",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home, color: Colors.pink),
+              title: Text("Accueil", style: TextStyle(color: Colors.black)),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.radio_rounded, color: Colors.pink),
+              title: Text("FM", style: TextStyle(color: Colors.black)),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.live_tv_rounded, color: Colors.pink),
+              title: Text("TV", style: TextStyle(color: Colors.black)),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.favorite_rounded, color: Colors.pink),
+              title: Text("Favoris", style: TextStyle(color: Colors.black)),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.person_2_rounded, color: Colors.pink),
+              title: Text("Rédacteurs", style: TextStyle(color: Colors.black)),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RedacteursInterface(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: const SingleChildScrollView(
         child: Column(
@@ -47,17 +121,26 @@ class PageAccueil extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const RedacteursInterface(),
+            ),
+          );
+        },
+        tooltip: 'Ajouter Rédacteur',
         backgroundColor: Colors.pink,
-        child: const Text("Cliquez"),
+        child: const Icon(Icons.edit, color: Colors.white),
       ),
       bottomNavigationBar: NavigationBar(
+        height: 50.0,
         destinations: [
           NavigationDestination(icon: Icon(Icons.home), label: "Acceuil"),
           NavigationDestination(icon: Icon(Icons.radio), label: "FM"),
           NavigationDestination(icon: Icon(Icons.live_tv), label: "TV"),
           NavigationDestination(icon: Icon(Icons.favorite), label: "Favoris"),
-          NavigationDestination(icon: Icon(Icons.person), label: "Profil"),
+          NavigationDestination(icon: Icon(Icons.person), label: "Rédacteurs"),
         ],
       ),
     );
@@ -97,7 +180,8 @@ class PartieTexte extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Text(
-        "Magazine Infos est bien plus qu'un simple magazine d'informations. C'est votre passerelle vers le monde, une source inestimable de connaissances et d'actualiés soigneusement sélectionnées pour vous éclairer sur les enjeux mondiaux, la cultures, la science, IA, et meme le divertissement (le jeux).",
+        "Magazine Infos est bien plus qu'un simple magazine d'informations. C'est votre passerelle vers le monde, une source inestimable de connaissances et d'actualités soigneusement sélectionnées pour vous éclairer sur les enjeux mondiaux, la cultures, la science, IA, et même le divertissement (le jeux).",
+        textAlign: TextAlign.justify,
         style: TextStyle(color: Colors.black, fontSize: 12),
       ),
     );
